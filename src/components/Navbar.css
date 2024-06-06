@@ -1,0 +1,8 @@
+/* src/components/Navbar.css */
+.logo {
+  width: 40px;
+  height: 40px;
+}
+.navbar-nav .nav-link {
+  margin-right: 10px;
+}
