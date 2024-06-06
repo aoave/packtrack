@@ -9,6 +9,109 @@
   margin-bottom: 20px;
 }
 
+.button-group {
+  display: flex;
+}
+
+.form-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%; /* Ensure the overlay covers the entire screen */
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align the form at the bottom */
+  z-index: 1000; /* Ensure the overlay is on top */
+  transition: all 0.5s ease-in-out;
+}
+
+.new-package-form {
+  background: #333;
+  padding: 20px;
+  border-radius: 8px 8px 0 0; /* Rounded corners on top */
+  width: 100%; /* Full width */
+  max-width: 400px; /* Max width to keep the form manageable */
+  position: relative;
+}
+
+.new-package-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: calc(100% - 20px); /* Ensure inputs take full width */
+}
+
+.new-package-form .add-package-btn {
+  padding: 10px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  width: calc(100% - 20px); /* Ensure button takes full width */
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.form-header h2 {
+  margin: 0;
+  color: #ffffff;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.close-btn {
+  background: #ff0000; /* Red color for visibility */
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%; /* Make it a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #444;
+  margin: 10px 0;
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally */
+}
+
+.slide-up {
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.form-overlay .new-package-form {
+  transform: translateY(0);
+}
+
+.package-list {
+  transition: transform 0.5s ease-in-out;
+}
+
+.package-list.slide-in {
+  transform: translateX(0);
+}
+
 .package-card {
   display: flex;
   align-items: center;
@@ -22,6 +125,7 @@
   width: 50px;
   height: 50px;
   margin-right: 15px;
+  object-fit: contain;
 }
 
 .package-info {

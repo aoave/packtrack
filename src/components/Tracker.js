@@ -23,6 +23,8 @@ const Tracker = () => {
           placeholder="Enter item"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          id="itemInput"  // Add id attribute
+          name="itemInput"  // Add name attribute
         />
         <div className="input-group-append">
           <button className="btn btn-primary" onClick={addItem}>Add Item</button>
