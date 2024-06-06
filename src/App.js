@@ -2,14 +2,14 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import Tracker from './components/Tracker';
+import Packages from './components/Packages';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <div className="container mt-5">
-        <Tracker />
+        <Packages />
       </div>
     </div>
   );
