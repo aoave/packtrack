@@ -3,6 +3,7 @@ import './Packages.css';
 import { ProgressBar } from 'react-bootstrap';
 import logo from '../assets/packagelogo.png';
 
+// Initial active packages data
 const initialActivePackages = [
   { id: 1, name: 'Amazon', status: 'Arrives today', progress: 100 },
   { id: 2, name: 'Atsuko', status: 'Ready to ship', progress: 20 },
@@ -12,6 +13,7 @@ const initialActivePackages = [
   { id: 6, name: 'Amazon', status: 'In transit', progress: 50 },
 ];
 
+// Initial archived packages data
 const archivedPackages = [
   { id: 1, name: 'Amazon', status: 'Delivered', date: 'Jan 26, 2021' },
   { id: 2, name: 'Amazon', status: 'Delivered', date: 'Jan 22, 2021' },
@@ -22,38 +24,49 @@ const archivedPackages = [
 ];
 
 const Packages = () => {
+  // State to toggle between active and archived packages
   const [showArchived, setShowArchived] = useState(false);
-  const [activePackages, setActivePackages] = useState(initialActivePackages);
-  const [newPackage, setNewPackage] = useState({ name: '', status: '', progress: 0 });
-  const [showForm, setShowForm] = useState(false);
+  // State to manage active packages
+  const [activePackages, setActivePackages] = useState(initialActivePackages); 
+  // State to manage new package form inputs
+  const [newPackage, setNewPackage] = useState({ name: '', status: '', progress: 0 }); 
+  // State to show/hide the form for adding new packages
+  const [showForm, setShowForm] = useState(false); 
 
+  // Toggle the visibility of archived packages
   const toggleArchived = () => {
     setShowArchived(!showArchived);
   };
 
+  // Handle input change in the new package form
+  // event object parameter e
   const handleInputChange = (e) => {
+    //grab name and value from the target input
     const { name, value } = e.target;
+    //updates the state of the "new package" form
     setNewPackage((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
+  // Add new package to the list of active packages
   const addNewPackage = () => {
+    //checks for both name and status properties before adding a new package
     if (newPackage.name && newPackage.status) {
       setActivePackages((prevPackages) => [
         ...prevPackages,
         { ...newPackage, id: prevPackages.length + 1, progress: Number(newPackage.progress) },
       ]);
-      setNewPackage({ name: '', status: '', progress: 0 });
-      setShowForm(false);  // Hide the form after adding a new package
+      setNewPackage({ name: '', status: '', progress: 0 }); // Reset the form
+      setShowForm(false); // Hide the form after adding a new package
     }
   };
 
+  // Toggle the visibility of the add package form
   const toggleForm = () => {
     setShowForm(!showForm);
   };
-
   return (
     <div className="packages">
       <div className="search-bar">
@@ -61,11 +74,13 @@ const Packages = () => {
       </div>
       <div className="button-group mb-3">
         <button className="btn btn-primary me-2" onClick={toggleForm}>+ Add orders</button>
-        <button className="btn btn-secondary" onClick={toggleArchived}>Archived orders</button>
+        <button className="btn btn-secondary" onClick={toggleArchived}>
+          {showArchived ? 'Active orders' : 'Archived orders'}
+        </button>
       </div>
       {showForm && (
         <div className="form-overlay">
-          <div className="new-package-form slide-up">
+          <div className={`new-package-form ${showForm ? 'slide-up' : ''}`}>
             <div className="form-header">
               <h2>Add Orders</h2>
               <button className="close-btn" onClick={toggleForm}>X</button>
@@ -91,7 +106,7 @@ const Packages = () => {
               <input
                 type="number"
                 className="form-control mb-2"
-                placeholder="Progress"
+                placeholder="Progress Percentage"
                 name="progress"
                 value={newPackage.progress}
                 onChange={handleInputChange}
@@ -102,6 +117,7 @@ const Packages = () => {
         </div>
       )}
       <div className={`package-list ${showArchived ? 'slide-in' : ''}`}>
+        {/* Conditionally check if archived packages should be displayed, if active map pkg data */}
         {showArchived ? (
           archivedPackages.map(pkg => (
             <div key={pkg.id} className="package-card">

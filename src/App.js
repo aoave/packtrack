@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className="container mt-5">
+      <div className="container-fluid px-0">
         <Packages />
       </div>
     </div>

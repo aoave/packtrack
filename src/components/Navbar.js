@@ -5,7 +5,7 @@ import logo from '../assets/logo.png';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
       <a className="navbar-brand" href="#">
         <img src={logo} alt="Logo" className="logo" />
       </a>
@@ -16,12 +16,6 @@ const Navbar = () => {
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <a className="nav-link" href="#">Home</a>
-          </li>
-          <li className="nav-item">
-            <button className="nav-link btn-link" type="button">About</button>
-          </li>
-          <li className="nav-item">
-            <button className="nav-link btn-link" type="button">Contact</button>
           </li>
         </ul>
       </div>

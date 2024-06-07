@@ -11,6 +11,7 @@
 
 .button-group {
   display: flex;
+  margin-bottom: 20px;
 }
 
 .form-overlay {
@@ -27,6 +28,7 @@
   transition: all 0.5s ease-in-out;
 }
 
+
 .new-package-form {
   background: #333;
   padding: 20px;
@@ -34,6 +36,19 @@
   width: 100%; /* Full width */
   max-width: 400px; /* Max width to keep the form manageable */
   position: relative;
+  transition: transform 0.5s ease-in-out !important;
+  -webkit-transition: transform 0.5s ease-in-out !important;
+  -moz-transition: transform 0.5s ease-in-out !important;
+  -ms-transition: transform 0.5s ease-in-out !important;
+  -o-transition: transform 0.5s ease-in-out !important;
+}
+
+.new-package-form.slide-up {
+  transform: translateY(0) !important;
+}
+
+.new-package-form.slide-down {
+  transform: translateY(100%) !important;
 }
 
 .new-package-form input {
@@ -69,7 +84,7 @@
 }
 
 .close-btn {
-  background: #ff0000; /* Red color for visibility */
+  background: #1a1a1a; /* Red color for visibility */
   border: none;
   color: #fff;
   font-size: 20px;
@@ -95,21 +110,55 @@ hr {
   align-items: center; /* Center children horizontally */
 }
 
-.slide-up {
-  transform: translateY(100%);
-  transition: transform 0.5s ease-in-out;
+.slide-in-left {
+  animation: slide-in-left 0.5s forwards;
 }
 
-.form-overlay .new-package-form {
-  transform: translateY(0);
+.slide-out-left {
+  animation: slide-out-left 0.5s forwards;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+}
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+}
+  to {
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+}
 }
 
 .package-list {
   transition: transform 0.5s ease-in-out;
+  flex-grow: 1;
 }
 
 .package-list.slide-in {
   transform: translateX(0);
+}
+
+.package-list.slide-out {
+  transform: translateX(-100%);
 }
 
 .package-card {
