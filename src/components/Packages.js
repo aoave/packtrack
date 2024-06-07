@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import './Packages.css';
-import { ProgressBar } from 'react-bootstrap';
-import logo from '../assets/packagelogo.png';
+import React, { useState } from 'react'; // Import React and useState hook
+import './Packages.css'; // Import component-specific CSS
+import { ProgressBar } from 'react-bootstrap'; // Import ProgressBar component from react-bootstrap
+import logo from '../assets/packagelogo.png'; // Import package logo image
 
 // Initial active packages data
 const initialActivePackages = [
@@ -67,17 +67,21 @@ const Packages = () => {
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+
   return (
     <div className="packages">
+      {/* Search Bar */}
       <div className="search-bar">
         <input type="text" className="form-control" placeholder="Search" id="search" name="search" />
       </div>
+      {/* Buttons to toggle form and archived packages */}
       <div className="button-group mb-3">
         <button className="btn btn-primary me-2" onClick={toggleForm}>+ Add orders</button>
         <button className="btn btn-secondary" onClick={toggleArchived}>
           {showArchived ? 'Active orders' : 'Archived orders'}
         </button>
       </div>
+      {/* Form for adding new packages */}
       {showForm && (
         <div className="form-overlay">
           <div className={`new-package-form ${showForm ? 'slide-up' : ''}`}>
@@ -116,6 +120,7 @@ const Packages = () => {
           </div>
         </div>
       )}
+      {/* Package List */}
       <div className={`package-list ${showArchived ? 'slide-in' : ''}`}>
         {/* Conditionally check if archived packages should be displayed, if active map pkg data */}
         {showArchived ? (
